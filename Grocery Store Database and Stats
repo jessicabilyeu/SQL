@@ -1,0 +1,33 @@
+--Create a grocery store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity INTEGER, section TEXT);
+
+INSERT INTO store VALUES (1, "pasta", 1.99, 10, "bread");
+INSERT INTO store VALUES (2, "popcorn", 2.50, 4, "snacks");
+INSERT INTO store VALUES (3, "juice", 5.45, 3, "drinks");
+INSERT INTO store VALUES (4, "cheese", 2.30, 6, "dairy");
+INSERT INTO store VALUES (5, "eggs", 0.99, 10, "dairy");
+INSERT INTO store VALUES (6, "milk", 2.00, 5, "dairy");
+INSERT INTO store VALUES (7, "chicken", 10.00, 8, "meat");
+INSERT INTO store VALUES (8, "coffee", 2.99, 3, "drinks");
+INSERT INTO store VALUES (9, "chicken nuggets", 10.99, 1, "frozen");
+INSERT INTO store VALUES (10, "bread", 2.45, 2, "bread");
+INSERT INTO store VALUES (11, "shrimp", 13.99, 7, "meat");
+INSERT INTO store VALUES (12, "fish", 22.99, 9, "meat");
+INSERT INTO store VALUES (13, "tomato", 1.99, 10, "produce");
+INSERT INTO store VALUES (14, "salad", 2.00, 5, "produce");
+INSERT INTO store VALUES (15, "pizza", 7.95, 3, "frozen");
+
+--display the database ordered by price. 
+SELECT * FROM store ORDER BY price;
+
+--what is the avg price of items in the meat section? 
+SELECT AVG(price) "avg meat item price"
+FROM store
+where section='meat'; 
+
+--what products does the store have most of?
+SELECT name, price, quantity
+FROM store
+order by quantity desc
+limit 5; 
