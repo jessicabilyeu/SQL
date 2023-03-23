@@ -1,0 +1,30 @@
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY, name TEXT, movie TEXT, year INTEGER);
+
+INSERT INTO movie_stars (name, movie, year) VALUES ("Johnny Depp", "Sweeny Todd", 2007);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Lucy Hale", "Fantasy Island", 2020);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Helena Bonham Carter", "Dark Shadows", 2012);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Emma Watson", "Beauty and the Beast", 2017);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Jennifer Lawrence", "Mother!", 2017);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Emma Stone", "Cruella", 2021);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Mila Kunis", "Luckiest Girl Alive", 2022);
+INSERT INTO movie_stars (name, movie, year) VALUES ("Johnny Depp", "Sleepy Hallow", 1999);
+SELECT * FROM movie_stars;
+
+CREATE TABLE studio (id INTEGER PRIMARY KEY, studio TEXT, movie TEXT, box_office TEXT);
+
+INSERT INTO studio (studio, movie, box_office) VALUES ("DreamWorks", "Sweeney Todd", "153.4m");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Colombia Pictures", "Fantasy Island", "49m");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Warner Bros", "Dark Shadows", "245.5m");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Walt Disney Pictures", "Beauty and the Beast", "1.266b");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Paramount Pictures", "Mother!", "44.5m");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Walt Disney Pictures", "Cruella", "233.5m");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Picturestart", "Luckiest Girl Alive", "null");
+INSERT INTO studio (studio, movie, box_office) VALUES ("Paramount Pictures", "Sleepy Hallow", "207m");
+SELECT * FROM studio;
+
+--What star actor had the best box office hit in the collected data?
+SELECT m.name, m.movie, s.box_office
+FROM movie_stars AS m
+JOIN studio AS s
+WHERE m.id = s.id
+ORDER BY box_office;
